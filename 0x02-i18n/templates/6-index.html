@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('home_title') }}</title>
+</head>
+<body>
+    <p>
+    {% if g.user %}
+        {% if get_locale() == 'fr' %}
+            Vous êtes connecté en tant que {{ g.user }}.
+        {% else %}
+            You are logged in as {{ g.user }}.
+        {% endif %}
+    {% else %}
+        {% if get_locale() == 'fr' %}
+            Vous n'êtes pas connecté.
+        {% else %}
+            You are not logged in.
+        {% endif %}
+    {% endif %}
+    </p>
+</body>
+</html>

@@ -18,12 +18,14 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 def get_user_locale(user_id: Optional[int]) -> Optional[str]:
     if user_id:
         user = users.get(user_id)
         if user and user['locale']:
             return user['locale']
     return None
+
 
 @babel.localeselector
 def get_locale() -> Optional[str]:
@@ -44,6 +46,7 @@ def get_locale() -> Optional[str]:
     # Default locale
     return app.config['BABEL_DEFAULT_LOCALE']
 
+
 @app.before_request
 def before_request() -> None:
     user_id = request.args.get('login_as')
@@ -52,9 +55,11 @@ def before_request() -> None:
     else:
         g.user = None
 
+
 @app.route('/')
 def index() -> str:
     return render_template('6-index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
