@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login System</title>
+</head>
+<body>
+    <p>
+    {% if g.user %}
+        {% if g.user['locale'] == 'fr' %}
+            Vous êtes connecté en tant que {{ g.user['name'] }}.
+        {% else %}
+            You are logged in as {{ g.user['name'] }}.
+        {% endif %}
+    {% else %}
+        {% if g.get('user', None) is None %}
+            Vous n'êtes pas connecté.
+        {% else %}
+            You are not logged in.
+        {% endif %}
+    {% endif %}
+    </p>
+</body>
+</html>
